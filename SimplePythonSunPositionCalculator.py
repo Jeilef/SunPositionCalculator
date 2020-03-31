@@ -1,9 +1,8 @@
 import math
 import datetime
 
-def getSEA(latitude, longitude, utc_offset):
-    date = datetime.datetime.now().timetuple()
-    print('date', date)
+def getSEA(latitude, longitude, utc_offset, check_time=datetime.datetime.now()):
+    date = check_time.timetuple()
     hour = date[3]
     minute = date[4]
     # Check your timezone to add the offset
@@ -44,8 +43,8 @@ def getSEA(latitude, longitude, utc_offset):
 
     return SEA
 
-def getAZ(latitude, longitude, utc_offset):
-    date = datetime.datetime.now().timetuple()
+def getAZ(latitude, longitude, utc_offset, check_time=datetime.datetime.now()):
+    date = check_time.timetuple()
     hour = date[3]
     minute = date[4]
     # Check your timezone to add the offset
@@ -88,7 +87,7 @@ def getAZ(latitude, longitude, utc_offset):
     AZ_rad = math.acos(cos_AZ)
     AZ = math.degrees(AZ_rad)
 
-    # You may need to use this check github description
+    # You may need to use this. check github description
     #AZ_NORTH_TO_EAST = 360 - AZ
 
     return AZ
